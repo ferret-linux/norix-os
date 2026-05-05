@@ -1,0 +1,27 @@
+---
+# yaml-language-server: $schema=https://schema.blue-build.org/module-list-v1.json
+
+modules:
+  - type: dnf
+    install:
+      install-weak-deps: false
+      packages:
+          - ghostty
+          - seahorse
+          - nautilus
+          - helium-drm
+          - file-roller
+          - ghostty-kio
+          - ghostty-neovim
+          - input-remapper
+          - nautilus-python
+          - ghostty-nautilus
+          - glycin-gtk4-libs
+          - ghostty-terminfo
+          - ffmpegthumbnailer
+          - glycin-thumbnailer
+          - gnome-disk-utility
+          - ghostty-bat-syntax
+          - system-config-printer
+          - ghostty-zsh-completion
+          - ghostty-shell-integration

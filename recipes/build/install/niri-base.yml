@@ -1,0 +1,15 @@
+---
+# yaml-language-server: $schema=https://schema.blue-build.org/module-list-v1.json
+
+modules:
+  - type: dnf
+    install:
+      install-weak-deps: false
+      packages:
+          - niri
+          - wlsunset
+          - wl-clipboard
+          - gnome-keyring
+          - brightnessctl
+          - adw-gtk3-theme
+          - gnome-keyring-pam

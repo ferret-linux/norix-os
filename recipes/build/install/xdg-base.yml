@@ -1,0 +1,21 @@
+---
+# yaml-language-server: $schema=https://schema.blue-build.org/module-list-v1.json
+
+modules:
+  - type: dnf
+    install:
+      install-weak-deps: false
+      packages:
+          - xdg-utils
+          - xdg-user-dirs
+          - xdg-desktop-portal
+          - xdg-desktop-portal-gtk
+          - xdg-desktop-portal-gnome
+
+  - type: script
+    snippets:
+          - |
+            rm -rf /usr/share/xdg-desktop-portal/portals/gtk.portal
+            rm -rf /usr/share/dbus-1/services/org.freedesktop.impl.portal.desktop.gtk.service
+            rm -rf /usr/lib/systemd/user/xdg-desktop-portal-gtk.service
+            rm -rf /usr/share/applications/xdg-desktop-portal-gtk.desktop

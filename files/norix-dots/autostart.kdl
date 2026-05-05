@@ -1,0 +1,2 @@
+// Start Noctalia Shell on startup
+spawn-at-startup "noctalia"

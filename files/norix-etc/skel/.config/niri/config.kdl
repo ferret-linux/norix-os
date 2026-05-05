@@ -1,0 +1,6 @@
+// =========================
+// Import Zynori Dots
+// =========================
+
+// comment or remove this line if you dont wanna use default dots
+include optional=true "/usr/lib/norix-dotfiles/main.kdl"

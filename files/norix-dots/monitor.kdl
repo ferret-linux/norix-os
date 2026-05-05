@@ -1,0 +1,18 @@
+// =========================
+// SCREENSHOT SETTINGS
+// =========================
+
+screenshot-path "~/Pictures/Screenshots/Screenshot-%Y-%m-%d-%H-%M-%S.png" 
+
+// =========================
+// EXTRA SETTINGS
+// =========================
+
+debug {
+    honor-xdg-activation-with-invalid-serial 
+    // allows external apps (like Noctalia) to activate windows
+}
+
+switch-events {
+    lid-close { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
+}
