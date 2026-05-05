@@ -45,8 +45,8 @@ jobs:
       fail-fast: false
       matrix:
         recipe:
-          - zynori-mesa.yml
-          - zynori-nvidia.yml
+          - mesa.yml
+          - nvidia.yml
 
     steps:
       - name: BlueBuild-Image Builder

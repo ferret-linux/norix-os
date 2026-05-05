@@ -28,7 +28,7 @@ modules:
   - from-file: build/install/niri-apps.yml
   - from-file: build/install/niri-input.yml
 
-  - from-file: build/configure/zynori-settings.yml
+  - from-file: build/configure/norix-settings.yml
   - from-file: build/configure/post-setup.yml
   - from-file: build/configure/os-release.yml
 ###################
