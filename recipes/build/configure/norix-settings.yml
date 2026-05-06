@@ -10,7 +10,7 @@ modules:
      - source: norix-usr
        destination: /usr
 
-     - source: niri-etc
+     - source: norix-etc
        destination: /etc
 
  - type: script
