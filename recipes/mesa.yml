@@ -7,7 +7,7 @@
 ####################
 name: norix-os
 description: NorixOS Linux image for Mesa GPUS
-base-image: ghcr.io/ferret-project/mink-os
+base-image: ghcr.io/ferret-linux/mink-os
 image-version: 44
 blue-build-tag: none
 cosign-version: none
