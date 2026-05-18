@@ -38,6 +38,7 @@ dnf5 install -y --setopt=install_weak_deps=False \
     ghostty-zsh-completion \
     ghostty-shell-integration
 # User applications
+mkdir -p /opt/helium
 dnf5 install -y --setopt=install_weak_deps=False \
     seahorse \
     nautilus \
