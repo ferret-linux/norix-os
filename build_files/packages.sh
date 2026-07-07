@@ -84,7 +84,7 @@ NOCTALIA_SHELL=(
   ddcutil
   nwg-look
   cliphist
-  noctalia-shell-v5
+  noctalia
   papirus-icon-theme
   breeze-cursor-theme
   evolution-data-server
