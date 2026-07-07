@@ -1,16 +1,17 @@
-// =========================
+// ============================================================================
 // SCREENSHOT SETTINGS
-// =========================
+// ============================================================================
 
-screenshot-path "~/Pictures/Screenshots/Screenshot-%Y-%m-%d-%H-%M-%S.png" 
+screenshot-path "~/Pictures/Screenshots/Screenshot-%Y-%m-%d-%H-%M-%S.png"
 
-// =========================
+
+// ============================================================================
 // EXTRA SETTINGS
-// =========================
+// ============================================================================
 
 debug {
-  // Allows notification actions and window activation from Noctalia.
-  honor-xdg-activation-with-invalid-serial
+    // Allows notification actions and window activation from Noctalia.
+    honor-xdg-activation-with-invalid-serial
 }
 
 switch-events {
