@@ -9,8 +9,8 @@ screenshot-path "~/Pictures/Screenshots/Screenshot-%Y-%m-%d-%H-%M-%S.png"
 // =========================
 
 debug {
-    honor-xdg-activation-with-invalid-serial 
-    // allows external apps (like Noctalia) to activate windows
+  // Allows notification actions and window activation from Noctalia.
+  honor-xdg-activation-with-invalid-serial
 }
 
 switch-events {

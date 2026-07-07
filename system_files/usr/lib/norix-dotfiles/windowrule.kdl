@@ -4,10 +4,25 @@ window-rule {
     draw-border-with-background false
 }
 
+// Noctalia Layer-Rules
+
 layer-rule {
-  // set noctalia overview wallpaper
-  match namespace="^noctalia-overview*"
+  match namespace="^noctalia-backdrop"
   place-within-backdrop true
+}
+
+layer-rule {
+  match namespace="^noctalia-(bar-[^\"]+|notification|dock|panel|attached-panel|osd)$"
+  background-effect {
+    xray false
+    // blur false
+  }
+}
+
+window-rule {
+  background-effect {
+    xray false
+  }
 }
 
 window-rule {
@@ -43,4 +58,11 @@ window-rule {
     open-floating true
     default-column-width { proportion 0.45; }
     default-window-height { proportion 0.50; }    
+}
+
+window-rule {
+    match app-id="dev.noctalia.Noctalia"
+    open-floating true
+    default-column-width { proportion 0.55; }
+    default-window-height { proportion 0.65; }    
 }
