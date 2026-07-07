@@ -15,5 +15,5 @@ debug {
 }
 
 switch-events {
-    lid-close { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
+    lid-close { spawn-sh "noctalia msg session lock-and-suspend"; }
 }

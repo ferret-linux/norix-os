@@ -111,9 +111,6 @@ binds {
     Mod+V       { spawn-sh "noctalia msg panel-toggle clipboard"; }
     Mod+W       { spawn-sh "noctalia msg panel-toggle wallpaper"; }
     Mod+SHIFT+I { spawn-sh "noctalia msg idle-inhibitor-toggle";  }
-    // Mod+H       { spawn-sh "qs -c noctalia-shell ipc call powerProfile enableNoctaliaPerformance && sleep 1 && qs -c noctalia-shell ipc call powerProfile set performance"; }
-    // Mod+SHIFT+H { spawn-sh "qs -c noctalia-shell ipc call powerProfile disableNoctaliaPerformance && sleep 1 && qs -c noctalia-shell ipc call powerProfile set balanced";  }
-
 
     // ---------------------------------------------------------------
     // Session controls
@@ -138,7 +135,7 @@ binds {
     XF86AudioPrev         { spawn-sh "noctalia msg media previous";    }
     XF86MonBrightnessUp   { spawn-sh "noctalia msg brightness-up *";   }
     XF86MonBrightnessDown { spawn-sh "noctalia msg brightness-down *"; }
-    // XF86Search             { spawn-sh "qs -c noctalia-shell ipc call powerProfile cycle"; }
+    XF86Search            { spawn-sh "noctalia msg power-cycle"; }
 
 
     // ---------------------------------------------------------------
