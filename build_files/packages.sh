@@ -10,6 +10,7 @@ set -ouex pipefail
 XDG_BASE=(
   xdg-utils
   xdg-user-dirs
+  xdg-terminal-exec
   xdg-user-dirs-gtk
   xdg-desktop-portal
   xdg-desktop-portal-gtk
