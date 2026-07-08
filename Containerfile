@@ -27,7 +27,8 @@ RUN dnf config-manager addrepo --from-repofile=https://ferretlinux.org/repo/ferr
     dnf config-manager setopt ferret-pkgs.enabled=1 && \
     dnf config-manager setopt ferret-pkgs.priority=90 && \
     dnf --refresh makecache && \
-    dnf upgrade --setopt=install_weak_deps=false
+    dnf upgrade --setopt=install_weak_deps=false && \
+    dnf remove -y noctalia-shell-v5 noctalia
 
 # Make /opt a real directory before package install (some packages
 # expect to write here directly).
