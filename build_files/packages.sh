@@ -51,6 +51,7 @@ GHOSTTY_TERMINAL=(
 
 USER_APPLICATIONS=(
   sushi
+  code
   bazaar
   flatseal
   seahorse
