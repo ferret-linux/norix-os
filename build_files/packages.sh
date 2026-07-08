@@ -55,6 +55,7 @@ USER_APPLICATIONS=(
   flatseal
   seahorse
   nautilus
+  resources
   helium-drm
   file-roller
   input-remapper
