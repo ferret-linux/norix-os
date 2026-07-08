@@ -60,6 +60,9 @@ RUN rm -rf /usr/share/xdg-desktop-portal/portals/gtk.portal && \
     rm -rf /usr/lib/systemd/user/xdg-desktop-portal-gtk.service && \
     rm -rf /usr/share/applications/xdg-desktop-portal-gtk.desktop
 
+# ── System files ─────────────────────────────────────────────
+COPY system_files/ /
+
 # ── Fix Weston Config (SDDM) ──────────────────────────────────
 RUN chmod go+rx /etc/xdg && \
     chmod go+rx /etc/xdg/weston && \
@@ -95,9 +98,6 @@ RUN rm -f /usr/share/applications/btop.desktop && \
     rm -f /usr/share/applications/kbd-layout-viewer5.desktop && \
     rm -f /usr/share/applications/nvim.desktop && \
     rm -f /usr/share/applications/nwg-look.desktop
-
-# ── System files ─────────────────────────────────────────────
-COPY system_files/ /
 
 # ── Installed package count ──────────────────────────────────
 # Just a quick sanity check/log of how many packages ended up
