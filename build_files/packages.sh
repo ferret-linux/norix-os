@@ -20,6 +20,7 @@ XDG_BASE=(
 NIRI_BASE=(
   niri
   wlsunset
+  libsecret
   wl-clipboard
   gnome-keyring
   brightnessctl
@@ -49,6 +50,7 @@ GHOSTTY_TERMINAL=(
 )
 
 USER_APPLICATIONS=(
+  sushi
   seahorse
   nautilus
   helium-drm
