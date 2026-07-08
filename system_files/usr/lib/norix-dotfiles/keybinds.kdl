@@ -116,7 +116,7 @@ binds {
     // Session controls
     // ---------------------------------------------------------------
     Mod+Escape   { spawn-sh "noctalia msg panel-toggle session";      }
-    XF86PowerOff { spawn-sh "/usr/lib/niri-settings/power-button.sh"; }
+    XF86PowerOff { spawn-sh "/usr/lib/norix-dotfiles/power-button.sh"; }
 
 
     // ---------------------------------------------------------------
