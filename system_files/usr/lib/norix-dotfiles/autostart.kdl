@@ -3,4 +3,4 @@
 // ============================================================================
  
 // Start Noctalia Shell on startup
-spawn-at-startup "noctalia --daemon"
+spawn-at-startup "noctalia"
