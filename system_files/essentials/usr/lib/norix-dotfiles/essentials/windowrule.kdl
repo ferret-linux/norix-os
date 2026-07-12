@@ -3,32 +3,14 @@
 // ============================================================================
 
 window-rule {
-    geometry-corner-radius     8
-    clip-to-geometry           true
-    draw-border-with-background false
+    geometry-corner-radius       8
+    clip-to-geometry             true
+    draw-border-with-background  false
 }
 
 window-rule {
     background-effect {
         xray false
-    }
-}
-
-
-// ============================================================================
-// NOCTALIA LAYER RULES
-// ============================================================================
-
-layer-rule {
-    match namespace="^noctalia-backdrop"
-    place-within-backdrop true
-}
-
-layer-rule {
-    match namespace="^noctalia-(bar-[^\"]+|notification|dock|panel|attached-panel|osd)$"
-    background-effect {
-        xray false
-        // blur false
     }
 }
 
@@ -45,41 +27,46 @@ window-rule {
     match app-id="gnome-disks"
     match app-id="org.gnome.seahorse.Application"
     match app-id="zync.updater.ghostty.window"
-    open-floating true
-    default-column-width  { proportion 0.45; }
-    default-window-height { proportion 0.45; }
+
+    open-floating          true
+    default-column-width   { proportion 0.45; }
+    default-window-height  { proportion 0.45; }
 }
 
 // --- Android / GPU settings ---
 window-rule {
     match app-id="Waydroid"
     match app-id="nvidia-settings"
-    open-floating true
-    default-column-width  { proportion 0.35; }
-    default-window-height { proportion 0.25; }
+
+    open-floating          true
+    default-column-width   { proportion 0.35; }
+    default-window-height  { proportion 0.25; }
 }
 
 // --- Printer configuration ---
 window-rule {
     match app-id="system-config-printer"
-    open-floating true
-    default-column-width  { proportion 0.30; }
-    default-window-height { proportion 0.30; }
+
+    open-floating          true
+    default-column-width   { proportion 0.30; }
+    default-window-height  { proportion 0.30; }
 }
 
 // --- File managers / theming tools ---
 window-rule {
     match app-id="org.gnome.Nautilus"
     match app-id="nwg-look"
-    open-floating true
-    default-column-width  { proportion 0.45; }
-    default-window-height { proportion 0.50; }
+
+    open-floating          true
+    default-column-width   { proportion 0.45; }
+    default-window-height  { proportion 0.50; }
 }
 
 // --- Noctalia settings window ---
 window-rule {
     match app-id="dev.noctalia.Noctalia"
-    open-floating true
-    default-column-width  { proportion 0.55; }
-    default-window-height { proportion 0.65; }
+
+    open-floating          true
+    default-column-width   { proportion 0.55; }
+    default-window-height  { proportion 0.65; }
 }

@@ -17,17 +17,6 @@ binds {
     // --- Window states ---
     Mod+F           { maximize-column;               }
     Mod+T           { toggle-window-floating;        }
-    Mod+Q repeat=false { close-window;               }
-
-
-    // ---------------------------------------------------------------
-    // Focus navigation
-    // ---------------------------------------------------------------
-    Mod+Left  { focus-column-left;  }
-    Mod+Right { focus-column-right; }
-    Mod+Up    { focus-window-up;    }
-    Mod+Down  { focus-window-down;  }
-
 
     // ---------------------------------------------------------------
     // Move windows / columns
@@ -74,8 +63,6 @@ binds {
     // ---------------------------------------------------------------
     // Application launching
     // ---------------------------------------------------------------
-    Mod+RETURN  { spawn-sh "ghostty";                            }
-    Mod+N       { spawn-sh "code --new-window";                  }
     Mod+E       { spawn-sh "nautilus --new-window --no-desktop"; }
     Mod+B       { spawn-sh "helium";                             }
     Mod+Shift+B { spawn-sh "helium --incognito";                 }
@@ -90,12 +77,6 @@ binds {
     Mod+V       { spawn-sh "noctalia msg panel-toggle clipboard"; }
     Mod+W       { spawn-sh "noctalia msg panel-toggle wallpaper"; }
     Mod+Shift+I { spawn-sh "noctalia msg idle-inhibitor-toggle";  }
-
-    // ---------------------------------------------------------------
-    // Session controls
-    // ---------------------------------------------------------------
-    XF86PowerOff { spawn-sh "/usr/lib/norix-dotfiles/power-button.sh"; }
-
 
     // ---------------------------------------------------------------
     // Audio controls (work even when locked)

@@ -19,4 +19,10 @@ binds {
     // Application launching
     // ---------------------------------------------------------------
     Mod+RETURN { spawn-sh "ghostty"; }
+
+    // ---------------------------------------------------------------
+    // Session controls
+    // ---------------------------------------------------------------
+    XF86PowerOff { spawn-sh "/usr/lib/norix-dotfiles/mx/power-button.sh"; }
+
 }
