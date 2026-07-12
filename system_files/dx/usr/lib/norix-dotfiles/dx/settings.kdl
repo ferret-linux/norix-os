@@ -1,19 +1,40 @@
 // ============================================================================
-// SCREENSHOT SETTINGS
+// EDITOR / IDE WINDOWS
 // ============================================================================
 
-screenshot-path "~/Pictures/Screenshots/Screenshot-%Y-%m-%d-%H-%M-%S.png"
-
-
-// ============================================================================
-// EXTRA SETTINGS
-// ============================================================================
-
-debug {
-    // Allows notification actions and window activation from Noctalia.
-    honor-xdg-activation-with-invalid-serial
+// VS Code's picker/quick-open popups shouldn't tile — they're
+// meant to float briefly over the main window.
+window-rule {
+    match app-id="code" title="^Quick Open$"
+    open-floating true
 }
 
-switch-events {
-    lid-close { spawn "noctalia" "msg" "session" "lock-and-suspend"; }
+
+// ============================================================================
+// CONTAINERS / VIRTUALIZATION TOOLING
+// ============================================================================
+
+window-rule {
+    match app-id="io.github.marhkb.Pods"
+
+    open-floating          true
+    default-column-width   { proportion 0.55; }
+    default-window-height  { proportion 0.70; }
 }
+
+window-rule {
+    match app-id="Waydroid"
+
+    open-floating          true
+    default-column-width   { proportion 0.40; }
+    default-window-height  { proportion 0.60; }
+}
+
+
+// ============================================================================
+// DEV TERMINAL
+// ============================================================================
+
+// The secondary "dev-term" ghostty instance (logs/servers) opens
+// tiled by default like any other terminal — no special rule needed
+// unless you want it to always spawn in a specific workspace.
