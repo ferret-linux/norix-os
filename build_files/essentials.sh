@@ -7,27 +7,6 @@ set -ouex pipefail
 # flattened into ONE dnf5 transaction below.
 # ---------------------------------------------------------------------------
 
-XDG_BASE=(
-  xdg-utils
-  xdg-user-dirs
-  xdg-terminal-exec
-  xdg-user-dirs-gtk
-  xdg-desktop-portal
-  xdg-desktop-portal-gtk
-  xdg-desktop-portal-gnome
-)
-
-NIRI_BASE=(
-  niri
-  wlsunset
-  libsecret
-  wl-clipboard
-  gnome-keyring
-  brightnessctl
-  adw-gtk3-theme
-  gnome-keyring-pam
-)
-
 SDDM_LOGIN_MANAGER=(
   sddm
   weston
@@ -39,32 +18,17 @@ SDDM_LOGIN_MANAGER=(
 )
 
 GHOSTTY_TERMINAL=(
-  ghostty
   ghostty-kio
   ghostty-neovim
-  ghostty-nautilus
   ghostty-terminfo
   ghostty-bat-syntax
   ghostty-zsh-completion
-  ghostty-shell-integration
 )
 
 USER_APPLICATIONS=(
   sushi
-  code
-  bazaar
   flatseal
-  seahorse
-  nautilus
   resources
-  helium-drm
-  file-roller
-  input-remapper
-  nautilus-python
-  glycin-gtk4-libs
-  ffmpegthumbnailer
-  glycin-thumbnailer
-  gnome-disk-utility
   system-config-printer
 )
 
@@ -85,16 +49,12 @@ IME_INTERNATIONAL_INPUT=(
 )
 
 NOCTALIA_SHELL=(
-  wtype
   qt5ct
   qt6ct
-  ddcutil
   nwg-look
   cliphist
-  noctalia
   papirus-icon-theme
   breeze-cursor-theme
-  evolution-data-server
   papirus-icon-theme-dark
 )
 
