@@ -13,7 +13,3 @@ debug {
     // Allows notification actions and window activation from Noctalia.
     honor-xdg-activation-with-invalid-serial
 }
-
-switch-events {
-    lid-close { spawn "noctalia" "msg" "session" "lock-and-suspend"; }
-}
