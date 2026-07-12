@@ -26,7 +26,9 @@ RUN sed -i 's/^NAME=.*/NAME="NorixOS"/' /usr/lib/os-release && \
 
 # ── Repositories ─────────────────────────────────────────────
 RUN dnf config-manager addrepo --from-repofile=https://ferretlinux.org/repo/ferret-pkgs.repo && \
+    dnf config-manager addrepo --from-repofile=https://negativo17.org/repos/fedora-multimedia.repo && \
     dnf config-manager setopt ferret-pkgs.enabled=1 && \
+    dnf config-manager setopt fedora-multimedia.priority=80 && \
     dnf config-manager setopt ferret-pkgs.priority=90 && \
     dnf --refresh makecache && \
     dnf upgrade --setopt=install_weak_deps=false && \
@@ -151,7 +153,9 @@ RUN mkdir -p /usr/lib/opt && \
 # ── Repository cleanup ───────────────────────────────────────
 # Remove build-only repos/coprs so they don't ship in the final image.
 RUN dnf config-manager setopt ferret-pkgs.enabled=0 && \
+    dnf config-manager setopt fedora-multimedia.enabled=0 && \
     rm -f /etc/yum.repos.d/ferret-pkgs.repo && \
+    rm -f /etc/yum.repos.d/fedora-multimedia.repo && \
     dnf5 autoremove -y && \
     dnf5 clean all && \
     dnf5 clean packages
