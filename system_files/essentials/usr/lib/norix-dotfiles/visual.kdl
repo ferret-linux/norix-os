@@ -1,0 +1,122 @@
+// ============================================================================
+// VISUAL SETTINGS
+// ============================================================================
+
+prefer-no-csd
+
+cursor {
+    xcursor-theme "breeze_cursors"
+    hide-when-typing
+}
+
+blur {
+    passes     4 // more passes = stronger blur (default: 3)
+    offset     6 // sample distance per pass (default: 3.0)
+    noise      0 // grain overlay (default: 0.02)
+    saturation 1 // color saturation boost (default: 1.5)
+}
+
+layout {
+    gaps 8
+
+    focus-ring {
+        off
+    }
+
+    border {
+        on
+        width            2
+        active-gradient   from="#708e9e" to="#5f967c" angle=45 relative-to="workspace-view"
+        inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view" in="srgb-linear"
+        urgent-gradient   from="#885f96" to="#9c3b3b" angle=45
+    }
+
+    shadow {
+        on
+        softness           8
+        spread             4
+        offset x=0 y=0
+        draw-behind-window false
+        color              "#00000070"
+    }
+
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.50000
+        proportion 0.66666
+        proportion 0.99999
+    }
+
+    preset-window-heights {
+        proportion 0.33333
+        proportion 0.50000
+        proportion 0.66666
+        proportion 0.99999
+    }
+}
+
+
+// ============================================================================
+// UI / OVERLAY SETTINGS
+// ============================================================================
+
+hotkey-overlay {
+    skip-at-startup
+}
+
+
+// ============================================================================
+// ANIMATIONS CONFIG
+// ============================================================================
+
+animations {
+
+    // --- Workspace / view movement ---
+    workspace-switch {
+        //off // disable workspace switching animations
+    }
+
+    horizontal-view-movement {
+        spring damping-ratio=1.0 stiffness=1500 epsilon=0.0001 // stiff, snappy movement
+    }
+
+    // --- Window lifecycle ---
+    window-open {
+        duration-ms 185 // ultra-fast open animation
+        curve       "ease-out-quad"
+    }
+
+    window-close {
+        duration-ms 185
+        curve       "ease-out-quad"
+    }
+
+    window-movement {
+        spring damping-ratio=1.0 stiffness=1500 epsilon=0.0001
+    }
+
+    window-resize {
+        //off // disable resize animation
+    }
+
+    // --- UI / overlay animations ---
+    config-notification-open-close {
+        //off // disable config notification animations
+    }
+
+    exit-confirmation-open-close {
+        //off // disable exit dialog animation
+    }
+
+    screenshot-ui-open {
+        //off // disable screenshot UI animation
+    }
+
+    overview-open-close {
+        //off // disable overview animation
+    }
+
+    recent-windows-close {
+        //off // disable recent windows animation
+    }
+}
