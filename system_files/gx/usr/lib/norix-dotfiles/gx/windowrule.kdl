@@ -1,85 +1,60 @@
 // ============================================================================
-// GLOBAL WINDOW APPEARANCE
+// LAUNCHER WINDOWS (floating, small)
 // ============================================================================
 
 window-rule {
-    geometry-corner-radius     8
-    clip-to-geometry           true
-    draw-border-with-background false
+    match app-id="steam"
+    match app-id="lutris"
+    match app-id="com.usebottles.bottles"
+    match app-id="goverlay"
+
+    open-floating          true
+    default-column-width   { proportion 0.55; }
+    default-window-height  { proportion 0.70; }
 }
 
+
+// ============================================================================
+// STEAM SUB-WINDOWS
+// ============================================================================
+
+// Steam's friends list, chat, and small popups shouldn't tile —
+// they're meant to float freely alongside a game.
 window-rule {
+    match app-id="steam" title="^Friends List$"
+    match app-id="steam" title="^Steam - News$"
+    open-floating true
+}
+
+// The Steam Big Picture / game overlay should always be fullscreen.
+window-rule {
+    match app-id="steam" title="^Steam Big Picture Mode$"
+    open-fullscreen true
+}
+
+
+// ============================================================================
+// GAME WINDOWS (gamescope / Proton / Wine)
+// ============================================================================
+
+// gamescope sessions should always claim the whole output.
+window-rule {
+    match app-id="gamescope"
+    open-fullscreen true
+}
+
+// ============================================================================
+// PERFORMANCE
+// ============================================================================
+
+// Skip xray/background-blur compositing on any game window — pure
+// overhead with no benefit once a game has focus.
+window-rule {
+    match app-id="gamescope"
+    match title="^.*\.exe$"
+
     background-effect {
-        xray false
+        xray true
+        blur flase
     }
-}
-
-
-// ============================================================================
-// NOCTALIA LAYER RULES
-// ============================================================================
-
-layer-rule {
-    match namespace="^noctalia-backdrop"
-    place-within-backdrop true
-}
-
-layer-rule {
-    match namespace="^noctalia-(bar-[^\"]+|notification|dock|panel|attached-panel|osd)$"
-    background-effect {
-        xray false
-        // blur false
-    }
-}
-
-
-// ============================================================================
-// FLOATING WINDOW RULES
-// ============================================================================
-
-// --- Small utility windows ---
-window-rule {
-    match app-id="org.gnome.Characters"
-    match app-id="kbd-layout-viewer"
-    match app-id="org.gnome.FileRoller"
-    match app-id="gnome-disks"
-    match app-id="org.gnome.seahorse.Application"
-    match app-id="zync.updater.ghostty.window"
-    open-floating true
-    default-column-width  { proportion 0.45; }
-    default-window-height { proportion 0.45; }
-}
-
-// --- Android / GPU settings ---
-window-rule {
-    match app-id="Waydroid"
-    match app-id="nvidia-settings"
-    open-floating true
-    default-column-width  { proportion 0.35; }
-    default-window-height { proportion 0.25; }
-}
-
-// --- Printer configuration ---
-window-rule {
-    match app-id="system-config-printer"
-    open-floating true
-    default-column-width  { proportion 0.30; }
-    default-window-height { proportion 0.30; }
-}
-
-// --- File managers / theming tools ---
-window-rule {
-    match app-id="org.gnome.Nautilus"
-    match app-id="nwg-look"
-    open-floating true
-    default-column-width  { proportion 0.45; }
-    default-window-height { proportion 0.50; }
-}
-
-// --- Noctalia settings window ---
-window-rule {
-    match app-id="dev.noctalia.Noctalia"
-    open-floating true
-    default-column-width  { proportion 0.55; }
-    default-window-height { proportion 0.65; }
 }

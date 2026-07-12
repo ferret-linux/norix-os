@@ -1,6 +1,23 @@
 // ============================================================================
 // STARTUP
 // ============================================================================
- 
-// Start Noctalia Shell on startup
-spawn-at-startup "noctalia"
+
+// GOverlay is a config UI, not something you need running at boot —
+// launch it on demand via keybind instead.
+// spawn-at-startup "goverlay"
+
+// ============================================================================
+// ANIMATIONS
+// ============================================================================
+
+// Proton/Wine windows and gamescope sessions can be finicky about
+// resize/state events during animation — keep transitions instant.
+animations {
+    window-open {
+        off
+    }
+
+    window-close {
+        off
+    }
+}
