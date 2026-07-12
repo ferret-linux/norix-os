@@ -1,0 +1,125 @@
+binds {
+
+    // ---------------------------------------------------------------
+    // Window management
+    // ---------------------------------------------------------------
+    Mod+C           { center-column;                 }
+    Mod+G           { toggle-column-tabbed-display;  }
+    Mod+R           { switch-preset-column-width;    }
+    Mod+Shift+R     { switch-preset-window-height;   }
+    Mod+Comma       { consume-or-expel-window-left;  }
+    Mod+Period      { consume-or-expel-window-right; }
+    Mod+Minus       { set-column-width "-5%";        }
+    Mod+Equal       { set-column-width "+5%";        }
+    Mod+Shift+Minus { set-window-height "-5%";       }
+    Mod+Shift+Equal { set-window-height "+5%";       }
+
+    // --- Window states ---
+    Mod+F           { maximize-column;               }
+    Mod+T           { toggle-window-floating;        }
+    Mod+Q repeat=false { close-window;               }
+
+
+    // ---------------------------------------------------------------
+    // Focus navigation
+    // ---------------------------------------------------------------
+    Mod+Left  { focus-column-left;  }
+    Mod+Right { focus-column-right; }
+    Mod+Up    { focus-window-up;    }
+    Mod+Down  { focus-window-down;  }
+
+
+    // ---------------------------------------------------------------
+    // Move windows / columns
+    // ---------------------------------------------------------------
+    Mod+Shift+Left  { move-column-left;  }
+    Mod+Shift+Right { move-column-right; }
+    Mod+Shift+Up    { move-window-up;    }
+    Mod+Shift+Down  { move-window-down;  }
+
+
+    // ---------------------------------------------------------------
+    // Workspace switching (1-10)
+    // ---------------------------------------------------------------
+    Mod+1 { focus-workspace 1;  }
+    Mod+2 { focus-workspace 2;  }
+    Mod+3 { focus-workspace 3;  }
+    Mod+4 { focus-workspace 4;  }
+    Mod+5 { focus-workspace 5;  }
+    Mod+6 { focus-workspace 6;  }
+    Mod+7 { focus-workspace 7;  }
+    Mod+8 { focus-workspace 8;  }
+    Mod+9 { focus-workspace 9;  }
+    Mod+0 { focus-workspace 10; }
+
+    // --- Move column to workspace (1-10) ---
+    Mod+Shift+1 { move-column-to-workspace 1;  }
+    Mod+Shift+2 { move-column-to-workspace 2;  }
+    Mod+Shift+3 { move-column-to-workspace 3;  }
+    Mod+Shift+4 { move-column-to-workspace 4;  }
+    Mod+Shift+5 { move-column-to-workspace 5;  }
+    Mod+Shift+6 { move-column-to-workspace 6;  }
+    Mod+Shift+7 { move-column-to-workspace 7;  }
+    Mod+Shift+8 { move-column-to-workspace 8;  }
+    Mod+Shift+9 { move-column-to-workspace 9;  }
+    Mod+Shift+0 { move-column-to-workspace 10; }
+
+
+    // ---------------------------------------------------------------
+    // Overview
+    // ---------------------------------------------------------------
+    Mod+Tab repeat=false { toggle-overview; }
+
+
+    // ---------------------------------------------------------------
+    // Application launching
+    // ---------------------------------------------------------------
+    Mod+RETURN  { spawn-sh "ghostty";                            }
+    Mod+N       { spawn-sh "code --new-window";                  }
+    Mod+E       { spawn-sh "nautilus --new-window --no-desktop"; }
+    Mod+B       { spawn-sh "helium";                             }
+    Mod+Shift+B { spawn-sh "helium --incognito";                 }
+
+
+    // ---------------------------------------------------------------
+    // Noctalia (shell / panels)
+    // ---------------------------------------------------------------
+    Mod+SPACE   { spawn-sh "noctalia msg panel-toggle launcher";  }
+    Mod+I       { spawn-sh "noctalia msg settings-toggle";        }
+    Mod+L       { spawn-sh "noctalia msg screen-lock";            }
+    Mod+V       { spawn-sh "noctalia msg panel-toggle clipboard"; }
+    Mod+W       { spawn-sh "noctalia msg panel-toggle wallpaper"; }
+    Mod+Shift+I { spawn-sh "noctalia msg idle-inhibitor-toggle";  }
+
+    // ---------------------------------------------------------------
+    // Session controls
+    // ---------------------------------------------------------------
+    XF86PowerOff { spawn-sh "/usr/lib/norix-dotfiles/power-button.sh"; }
+
+
+    // ---------------------------------------------------------------
+    // Audio controls (work even when locked)
+    // ---------------------------------------------------------------
+    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "noctalia msg volume-up";   }
+    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "noctalia msg volume-down"; }
+    XF86AudioMute        allow-when-locked=true { spawn-sh "noctalia msg volume-mute"; }
+
+
+    // ---------------------------------------------------------------
+    // Media & system controls
+    // ---------------------------------------------------------------
+    XF86AudioNext         { spawn-sh "noctalia msg media next";        }
+    XF86AudioPlay         { spawn-sh "noctalia msg media toggle";      }
+    XF86AudioPrev         { spawn-sh "noctalia msg media previous";    }
+    XF86MonBrightnessUp   { spawn-sh "noctalia msg brightness-up *";   }
+    XF86MonBrightnessDown { spawn-sh "noctalia msg brightness-down *"; }
+    XF86Search            { spawn-sh "noctalia msg power-cycle"; }
+
+
+    // ---------------------------------------------------------------
+    // Screenshots
+    // ---------------------------------------------------------------
+    Print       { screenshot;        }
+    Shift+Print { screenshot-screen; }
+    Alt+Print   { screenshot-window; }
+}
