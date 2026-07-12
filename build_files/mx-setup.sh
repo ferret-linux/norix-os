@@ -48,22 +48,6 @@ USER_APPLICATIONS=(
   gnome-disk-utility
 )
 
-IME_INTERNATIONAL_INPUT=(
-  fcitx5
-  fcitx5-gtk
-  fcitx5-qt6
-  fcitx5-rime
-  fcitx5-mozc
-  fcitx5-m17n
-  fcitx5-hangul
-  fcitx5-unikey
-  fcitx5-chewing
-  fcitx5-libthai
-  fcitx5-configtool
-  fcitx5-table-extra
-  fcitx5-chinese-addons
-)
-
 NOCTALIA_SHELL=(
   wtype
   ddcutil
