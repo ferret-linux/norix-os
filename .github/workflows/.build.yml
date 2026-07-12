@@ -23,8 +23,24 @@ jobs:
         include:
           - image_name: norix-os
             base_image: ghcr.io/ferret-linux/mink-os:latest
+          - image_name: norix-os-mx
+            base_image: ghcr.io/ferret-linux/mink-os-mx:latest
+          - image_name: norix-os-dx
+            base_image: ghcr.io/ferret-linux/mink-os-dx:latest
+          - image_name: norix-os-gx
+            base_image: ghcr.io/ferret-linux/mink-os-gx:latest
+          - image_name: norix-os-vx
+            base_image: ghcr.io/ferret-linux/mink-os-vx:latest
           - image_name: norix-os-nvidia
             base_image: ghcr.io/ferret-linux/mink-os-nvidia:latest
+          - image_name: norix-os-nvidia-mx
+            base_image: ghcr.io/ferret-linux/mink-os-mx-nvidia:latest
+          - image_name: norix-os-nvidia-gx
+            base_image: ghcr.io/ferret-linux/mink-os-gx-nvidia:latest
+          - image_name: norix-os-nvidia-dx
+            base_image: ghcr.io/ferret-linux/mink-os-dx-nvidia:latest
+          - image_name: norix-os-nvidia-vx
+            base_image: ghcr.io/ferret-linux/mink-os-vx-nvidia:latest
 
     steps:
       - name: Free Disk Space

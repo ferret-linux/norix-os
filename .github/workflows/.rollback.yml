@@ -22,7 +22,15 @@ jobs:
       matrix:
         include:
           - image_name: norix-os
+          - image_name: norix-os-mx
+          - image_name: norix-os-gx
+          - image_name: norix-os-dx
+          - image_name: norix-os-vx
           - image_name: norix-os-nvidia
+          - image_name: norix-os-mx-nvidia
+          - image_name: norix-os-gx-nvidia
+          - image_name: norix-os-dx-nvidia
+          - image_name: norix-os-vx-nvidia
 
     steps:
       - name: Login to GHCR
