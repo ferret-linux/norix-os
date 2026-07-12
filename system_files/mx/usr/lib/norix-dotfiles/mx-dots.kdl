@@ -2,6 +2,8 @@
 // EXTERNAL CONFIG INCLUDE
 // ============================================================================
 
+include optional=true "./mx/visual.kdl"
+include optional=true "./mx/monitor.kdl"
 include optional=true "./mx/keybinds.kdl"
-include optional=true "./mx/settings.kdl"
+include optional=true "./mx/windowrule.kdl"
 include optional=true "./mx/windowrule.kdl"

@@ -2,8 +2,6 @@
 // EXTERNAL CONFIG INCLUDE
 // ============================================================================
 
-include optional=true "./mx-dots.kdl"
-include optional=true "./gx-dots.kdl"
-include optional=true "./dx-dots.kdl"
-include optional=true "./vx-dots.kdl"
-include optional=true "./essentials.kdl"
+include optional=true "./dx/keybinds.kdl"
+include optional=true "./dx/settings.kdl"
+include optional=true "./dx/windowrule.kdl"
