@@ -6,10 +6,11 @@
 ARG BASE_IMAGE
 
 # ── Build context ─────────────────────────────────────────────
-# Allow build scripts to be referenced without being copied into
-# the final image.
+# Allow build scripts and system_files overlays to be referenced
+# without being copied into the final image directly.
 FROM scratch AS ctx
 COPY build_files /
+COPY system_files /system_files
 
 # ── Base image ───────────────────────────────────────────────
 FROM ${BASE_IMAGE}
@@ -17,6 +18,7 @@ FROM ${BASE_IMAGE}
 ARG IMAGE_NAME
 ARG IMAGE_VENDOR="ferret-linux"
 ARG IMAGE_TAG="latest"
+ENV IMAGE_NAME=${IMAGE_NAME}
 
 # ── OS release metadata ─────────────────────────────────────────
 RUN sed -i 's/^NAME=.*/NAME="NorixOS"/' /usr/lib/os-release && \
@@ -35,14 +37,55 @@ RUN dnf config-manager addrepo --from-repofile=https://ferretlinux.org/repo/ferr
 RUN rm -rf /opt && mkdir -p /opt
 
 # ── Package installation ─────────────────────────────────────
-# Make modifications desired in your image and install packages by
-# editing build_files/packages.sh — the RUN directive below executes
-# it with the recommended cache/tmpfs mounts.
+# system_files/ and build_files/ are split per flavor (mx, essentials,
+# dx, gx, vx), same convention as mink-os/RubinOS. Layer the matching
+# scripts using the IMAGE_NAME suffix:
+#   mx          -> ALL variants (core desktop)
+#   essentials  -> all variants EXCEPT *-mx / *-mx-nvidia
+#   dx          -> *-dx / *-dx-nvidia / *-vx / *-vx-nvidia (vx = dx + vx)
+#   gx          -> *-gx / *-gx-nvidia only
+#   vx          -> *-vx / *-vx-nvidia only (layered on top of dx)
 RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=cache,dst=/var/cache \
     --mount=type=cache,dst=/var/log \
     --mount=type=tmpfs,dst=/tmp \
-    bash /ctx/packages.sh
+    bash /ctx/mx-setup.sh
+
+RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
+    --mount=type=cache,dst=/var/cache \
+    --mount=type=cache,dst=/var/log \
+    --mount=type=tmpfs,dst=/tmp \
+    case "${IMAGE_NAME}" in \
+        *-mx|*-mx-nvidia) : ;; \
+        *) bash /ctx/essentials.sh ;; \
+    esac
+
+RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
+    --mount=type=cache,dst=/var/cache \
+    --mount=type=cache,dst=/var/log \
+    --mount=type=tmpfs,dst=/tmp \
+    case "${IMAGE_NAME}" in \
+        *-dx|*-dx-*|*-vx|*-vx-*) bash /ctx/dx-setup.sh ;; \
+        *) : ;; \
+    esac
+
+RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
+    --mount=type=cache,dst=/var/cache \
+    --mount=type=cache,dst=/var/log \
+    --mount=type=tmpfs,dst=/tmp \
+    case "${IMAGE_NAME}" in \
+        *-gx|*-gx-*) bash /ctx/gx-setup.sh ;; \
+        *) : ;; \
+    esac
+
+RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
+    --mount=type=cache,dst=/var/cache \
+    --mount=type=cache,dst=/var/log \
+    --mount=type=tmpfs,dst=/tmp \
+    case "${IMAGE_NAME}" in \
+        *-vx|*-vx-*) bash /ctx/vx-setup.sh ;; \
+        *) : ;; \
+    esac
 
 # ── Package version lock ─────────────────────────────────────
 # Lock all installed packages to their current versions/releases,
@@ -61,7 +104,29 @@ RUN rm -rf /usr/share/xdg-desktop-portal/portals/gtk.portal && \
     rm -rf /usr/share/applications/xdg-desktop-portal-gtk.desktop
 
 # ── System files ─────────────────────────────────────────────
-COPY system_files/ /
+# Same per-variant overlay logic as the package-install steps above.
+# `cp -a src/. /` merges directory contents onto root without
+# clobbering the whole tree (unlike a bare `COPY system_files/ /`,
+# which would dump literal /mx, /essentials, /dx, /gx, /vx folders
+# at the filesystem root instead of overlaying their etc/usr trees).
+RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
+    cp -a /ctx/system_files/mx/. / && \
+    case "${IMAGE_NAME}" in \
+        *-mx|*-mx-nvidia) : ;; \
+        *) cp -a /ctx/system_files/essentials/. / ;; \
+    esac && \
+    case "${IMAGE_NAME}" in \
+        *-dx|*-dx-*|*-vx|*-vx-*) cp -a /ctx/system_files/dx/. / ;; \
+        *) : ;; \
+    esac && \
+    case "${IMAGE_NAME}" in \
+        *-gx|*-gx-*) cp -a /ctx/system_files/gx/. / ;; \
+        *) : ;; \
+    esac && \
+    case "${IMAGE_NAME}" in \
+        *-vx|*-vx-*) cp -a /ctx/system_files/vx/. / ;; \
+        *) : ;; \
+    esac
 
 # ── Fix Weston Config (SDDM) ──────────────────────────────────
 RUN chmod go+rx /etc/xdg && \
@@ -100,8 +165,6 @@ RUN rm -f /usr/share/applications/btop.desktop && \
     rm -f /usr/share/applications/nwg-look.desktop
 
 # ── Installed package count ──────────────────────────────────
-# Just a quick sanity check/log of how many packages ended up
-# in the image — no version locking applied.
 RUN echo "📦 Total installed packages: $(rpm -qa | wc -l)"
 
 # ── InitRAMFS build ──────────────────────────────────────────
