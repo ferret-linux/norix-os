@@ -32,8 +32,7 @@ RUN dnf config-manager addrepo --from-repofile=https://ferretlinux.org/repo/ferr
     dnf config-manager setopt fedora-multimedia.priority=80 && \
     dnf config-manager setopt ferret-pkgs.priority=90 && \
     dnf --refresh makecache && \
-    dnf upgrade --setopt=install_weak_deps=false && \
-    dnf remove -y noctalia-shell-v5 noctalia
+    dnf upgrade --setopt=install_weak_deps=false
 
 # Make /opt a real directory before package install (some packages
 # expect to write here directly).
