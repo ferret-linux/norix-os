@@ -11,7 +11,6 @@ set -ouex pipefail
 VM_MANAGEMENT_UI=(
   virt-manager
   virt-viewer
-  gnome-boxes
 )
 
 # ---------------------------------------------------------------------------
