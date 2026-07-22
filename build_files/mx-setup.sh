@@ -40,7 +40,6 @@ USER_APPLICATIONS=(
   nautilus
   helium-drm
   file-roller
-  input-remapper
   nautilus-python
   glycin-gtk4-libs
   ffmpegthumbnailer
