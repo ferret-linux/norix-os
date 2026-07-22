@@ -162,11 +162,13 @@ RUN dnf config-manager setopt ferret-pkgs.enabled=0 && \
 
 # ── Remove unwanted desktop entries ───────────────────────────
 RUN rm -f /usr/share/applications/btop.desktop && \
+    rm -f /usr/share/applications/nvim.desktop && \
     rm -f /usr/share/applications/qt6ct.desktop && \
     rm -f /usr/share/applications/qt5ct.desktop && \
+    rm -f /usr/share/applications/nwg-look.desktop && \
     rm -f /usr/share/applications/kbd-layout-viewer5.desktop && \
-    rm -f /usr/share/applications/nvim.desktop && \
-    rm -f /usr/share/applications/nwg-look.desktop
+    rm -f /usr/share/applications/dev.noctalia.Noctalia.desktop && \
+    rm -f /usr/share/applications/fcitx5-wayland-launcher.desktop
 
 # ── Installed package count ──────────────────────────────────
 RUN echo "📦 Total installed packages: $(rpm -qa | wc -l)"
