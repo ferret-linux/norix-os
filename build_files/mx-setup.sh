@@ -18,6 +18,7 @@ XDG_BASE=(
 )
 
 NORIX_BASE=(
+  jq
   niri
   grim
   slurp
