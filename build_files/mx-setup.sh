@@ -19,6 +19,10 @@ XDG_BASE=(
 
 NORIX_BASE=(
   niri
+  grim
+  slurp
+  satty
+  wl-copy
   mangowc
   wlsunset
   libsecret
