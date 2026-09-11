@@ -3,6 +3,7 @@ binds {
     // ---------------------------------------------------------------
     // Window management
     // ---------------------------------------------------------------
+    Mod+Q repeat=false { close-window; }
     Mod+C           { center-column;                 }
     Mod+G           { toggle-column-tabbed-display;  }
     Mod+R           { switch-preset-column-width;    }
@@ -17,6 +18,16 @@ binds {
     // --- Window states ---
     Mod+F           { maximize-column;               }
     Mod+T           { toggle-window-floating;        }
+
+
+    // ---------------------------------------------------------------
+    // Focus navigation
+    // ---------------------------------------------------------------
+    Mod+Left  { focus-column-left;  }
+    Mod+Right { focus-column-right; }
+    Mod+Up    { focus-window-up;    }
+    Mod+Down  { focus-window-down;  }
+
 
     // ---------------------------------------------------------------
     // Move windows / columns
@@ -63,9 +74,26 @@ binds {
     // ---------------------------------------------------------------
     // Application launching
     // ---------------------------------------------------------------
-    Mod+E       { spawn-sh "nautilus --new-window --no-desktop"; }
-    Mod+B       { spawn-sh "helium";                             }
-    Mod+Shift+B { spawn-sh "helium --incognito";                 }
+    Mod+RETURN { spawn-sh "ghostty"; }
+    Mod+E      { spawn-sh "nautilus --new-window --no-desktop"; }
+    Mod+B      { spawn-sh "helium";                             }
+    Mod+Shift+B { spawn-sh "helium --incognito";                }
+    Mod+N      { spawn-sh "code --new-window"; }
+
+
+    // ---------------------------------------------------------------
+    // Containers / virtualization tooling
+    // ---------------------------------------------------------------
+    Mod+Shift+P { spawn-sh "pods"; }
+    Mod+Shift+D { spawn-sh "waydroid"; }
+    Mod+Shift+V { spawn-sh "virt-manager"; }
+    Mod+Shift+C { spawn-sh "virt-viewer --wait"; }
+
+
+    // ---------------------------------------------------------------
+    // Terminal (dev-focused second terminal for logs/servers)
+    // ---------------------------------------------------------------
+    Mod+Shift+RETURN { spawn-sh "ghostty --title=dev-term"; }
 
 
     // ---------------------------------------------------------------
@@ -77,6 +105,7 @@ binds {
     Mod+V       { spawn-sh "noctalia msg panel-toggle clipboard"; }
     Mod+W       { spawn-sh "noctalia msg panel-toggle wallpaper"; }
     Mod+Shift+I { spawn-sh "noctalia msg idle-inhibitor-toggle";  }
+
 
     // ---------------------------------------------------------------
     // Audio controls (work even when locked)
@@ -95,6 +124,16 @@ binds {
     XF86MonBrightnessUp   { spawn-sh "noctalia msg brightness-up *";   }
     XF86MonBrightnessDown { spawn-sh "noctalia msg brightness-down *"; }
     XF86Search            { spawn-sh "noctalia msg power-cycle"; }
+    XF86PowerOff repeat=false { spawn-sh "/usr/lib/norix-dotfiles/niri/power-button.sh"; }
+
+
+    // ---------------------------------------------------------------
+    // Game launchers
+    // ---------------------------------------------------------------
+    Mod+Shift+S { spawn-sh "steam";         }
+    Mod+Shift+L { spawn-sh "lutris";        }
+    Mod+Shift+O { spawn-sh "bottles";       }
+    Mod+Shift+G { spawn-sh "goverlay";      }
 
 
     // ---------------------------------------------------------------

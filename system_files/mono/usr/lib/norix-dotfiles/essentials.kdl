@@ -1,7 +1,0 @@
-// ============================================================================
-// EXTERNAL CONFIG INCLUDE
-// ============================================================================
-
-include optional=true "./essentials/keybinds.kdl"
-include optional=true "./essentials/settings.kdl"
-include optional=true "./essentials/windowrule.kdl"

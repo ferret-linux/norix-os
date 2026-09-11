@@ -1,7 +1,0 @@
-// ============================================================================
-// EXTERNAL CONFIG INCLUDE
-// ============================================================================
-
-include optional=true "./dx/keybinds.kdl"
-include optional=true "./dx/settings.kdl"
-include optional=true "./dx/windowrule.kdl"

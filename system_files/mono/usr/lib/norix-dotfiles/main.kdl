@@ -2,8 +2,7 @@
 // EXTERNAL CONFIG INCLUDE
 // ============================================================================
 
-include optional=true "./mx-dots.kdl"
-include optional=true "./gx-dots.kdl"
-include optional=true "./dx-dots.kdl"
-include optional=true "./vx-dots.kdl"
-include optional=true "./essentials.kdl"
+include optional=true "./niri/keybinds.kdl"
+include optional=true "./niri/settings.kdl"
+include optional=true "./niri/windowrule.kdl"
+include optional=true "./niri/autostart.kdl"

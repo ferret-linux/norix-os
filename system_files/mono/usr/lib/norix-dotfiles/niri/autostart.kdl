@@ -1,5 +1,6 @@
 // ============================================================================
-// VISUAL SETTINGS
+// STARTUP
 // ============================================================================
 
-prefer-no-csd
+// Start Noctalia Shell on startup
+spawn-at-startup "noctalia"
