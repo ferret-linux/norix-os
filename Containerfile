@@ -31,12 +31,7 @@ RUN dnf config-manager addrepo --from-repofile=https://ferretlinux.org/repo/ferr
     dnf config-manager setopt fedora-multimedia.enabled=1 && \
     dnf config-manager setopt fedora-multimedia.priority=80 && \
     dnf config-manager setopt ferret-pkgs.priority=90 && \
-    dnf --refresh makecache && \
-    dnf upgrade --setopt=install_weak_deps=false
-
-# Make /opt a real directory before package install (some packages
-# expect to write here directly).
-RUN rm -rf /opt && mkdir -p /opt
+    dnf --refresh makecache
 
 # ── Package installation ─────────────────────────────────────
 RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
@@ -105,11 +100,6 @@ RUN rm -rf /usr/share/xdg-desktop-portal/portals/gtk.portal && \
 RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     cp -a /ctx/system_files/mono/. /
 
-# ── Fix Weston Config (SDDM) ──────────────────────────────────
-RUN chmod go+rx /etc/xdg && \
-    chmod go+rx /etc/xdg/weston && \
-    chmod go+r /etc/xdg/weston/weston.ini
-
 # ── /opt → immutable tree migration ───────────────────────────
 # Move /opt contents into the immutable /usr tree, create
 # tmpfiles.d entries to symlink them back at runtime, then replace
@@ -120,7 +110,6 @@ RUN mkdir -p /usr/lib/opt && \
         opt=$(basename "$dir"); \
         echo "L+?  \"/opt/${opt}\"  -  -  -  -  /usr/lib/opt/${opt}" > /usr/lib/tmpfiles.d/99-optfix-${opt}.conf; \
     done && \
-    rm -rf /opt && ln -s /var/opt /opt && \
     mkdir -p /var/roothome && \
     mkdir -p /var/tmp && \
     chmod -R 1777 /var/tmp
