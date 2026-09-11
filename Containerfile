@@ -39,14 +39,6 @@ RUN dnf config-manager addrepo --from-repofile=https://ferretlinux.org/repo/ferr
 RUN rm -rf /opt && mkdir -p /opt
 
 # ── Package installation ─────────────────────────────────────
-# system_files/ and build_files/ are split per flavor (mx, essentials,
-# dx, gx, vx), same convention as mink-os/RubinOS. Layer the matching
-# scripts using the IMAGE_NAME suffix:
-#   mx          -> ALL variants (core desktop)
-#   essentials  -> all variants EXCEPT *-mx / *-mx-nvidia
-#   dx          -> *-dx / *-dx-nvidia / *-vx / *-vx-nvidia (vx = dx + vx)
-#   gx          -> *-gx / *-gx-nvidia only
-#   vx          -> *-vx / *-vx-nvidia only (layered on top of dx)
 RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=cache,dst=/var/cache \
     --mount=type=cache,dst=/var/log \
@@ -106,29 +98,12 @@ RUN rm -rf /usr/share/xdg-desktop-portal/portals/gtk.portal && \
     rm -rf /usr/share/applications/xdg-desktop-portal-gtk.desktop
 
 # ── System files ─────────────────────────────────────────────
-# Same per-variant overlay logic as the package-install steps above.
 # `cp -a src/. /` merges directory contents onto root without
 # clobbering the whole tree (unlike a bare `COPY system_files/ /`,
-# which would dump literal /mx, /essentials, /dx, /gx, /vx folders
-# at the filesystem root instead of overlaying their etc/usr trees).
+# which would dump literal folders at the filesystem root instead
+# of overlaying their etc/usr trees).
 RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
-    cp -a /ctx/system_files/mx/. / && \
-    case "${IMAGE_NAME}" in \
-        *-mx|*-mx-nvidia) : ;; \
-        *) cp -a /ctx/system_files/essentials/. / ;; \
-    esac && \
-    case "${IMAGE_NAME}" in \
-        *-dx|*-dx-*|*-vx|*-vx-*) cp -a /ctx/system_files/dx/. / ;; \
-        *) : ;; \
-    esac && \
-    case "${IMAGE_NAME}" in \
-        *-gx|*-gx-*) cp -a /ctx/system_files/gx/. / ;; \
-        *) : ;; \
-    esac && \
-    case "${IMAGE_NAME}" in \
-        *-vx|*-vx-*) cp -a /ctx/system_files/vx/. / ;; \
-        *) : ;; \
-    esac
+    cp -a /ctx/system_files/mono/. /
 
 # ── Fix Weston Config (SDDM) ──────────────────────────────────
 RUN chmod go+rx /etc/xdg && \
