@@ -3,4 +3,4 @@
 // =========================
 
 // comment or remove this line if you dont wanna use default dots
-include optional=true "/usr/lib/norix-dotfiles/main.kdl"
+include optional=true "/usr/lib/norix-dotfiles/niri.kdl"
