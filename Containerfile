@@ -97,7 +97,7 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
 RUN dnf versionlock add $(rpm -qa --qf '%{NAME}\n')
 
 # ── Enable services ───────────────────────────────────────────
-RUN systemctl enable sddm.service || true
+RUN systemctl enable greetd
 
 # ── Disable GTK desktop portal (old) ──────────────────────────
 RUN rm -rf /usr/share/xdg-desktop-portal/portals/gtk.portal && \

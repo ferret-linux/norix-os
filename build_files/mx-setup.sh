@@ -49,9 +49,11 @@ USER_APPLICATIONS=(
 
 NOCTALIA_SHELL=(
   wtype
+  greetd
   ddcutil
   cliphist
   noctalia
+  noctalia-greeter
   evolution-data-server
 )
 
