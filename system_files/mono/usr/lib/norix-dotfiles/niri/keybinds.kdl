@@ -124,7 +124,7 @@ binds {
     XF86MonBrightnessUp   { spawn-sh "noctalia msg brightness-up *";   }
     XF86MonBrightnessDown { spawn-sh "noctalia msg brightness-down *"; }
     XF86Search            { spawn-sh "noctalia msg power-cycle"; }
-    XF86PowerOff repeat=false { spawn-sh "/usr/lib/norix-dotfiles/niri/power-button.sh"; }
+    XF86PowerOff repeat=false { spawn-sh "/usr/lib/norix-dotfiles/power-button.sh"; }
 
 
     // ---------------------------------------------------------------
@@ -137,9 +137,10 @@ binds {
 
 
     // ---------------------------------------------------------------
-    // Screenshots
+    // Screenshots (grim + slurp + satty)
     // ---------------------------------------------------------------
-    Print       { screenshot;        }
-    Shift+Print { screenshot-screen; }
-    Alt+Print   { screenshot-window; }
+    Print       { spawn-sh "/usr/lib/norix-dotfiles/screenshot.sh fullscreen"; }
+    Shift+Print { spawn-sh "/usr/lib/norix-dotfiles/screenshot.sh region";     }
+    Ctrl+Print  { spawn-sh "/usr/lib/norix-dotfiles/screenshot.sh window";     }
+    Mod+Print   { spawn-sh "/usr/lib/norix-dotfiles/screenshot.sh clip";       }
 }
