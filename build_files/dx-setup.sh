@@ -13,13 +13,11 @@ EDITORS_IDE=(
 
 CONTAINER_TOOLING=(
   podman
-  pods
 )
 
 VERSION_CONTROL=(
   git
   git-lfs
-  gh
 )
 
 ANDROID_TESTING=(

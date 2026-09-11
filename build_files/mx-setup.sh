@@ -17,8 +17,9 @@ XDG_BASE=(
   xdg-desktop-portal-gnome
 )
 
-NIRI_BASE=(
+NORIX_BASE=(
   niri
+  mangowc
   wlsunset
   libsecret
   wl-clipboard
@@ -63,7 +64,7 @@ NOCTALIA_SHELL=(
 # ---------------------------------------------------------------------------
 ALL_PACKAGES=(
   "${XDG_BASE[@]}"
-  "${NIRI_BASE[@]}"
+  "${NORIX_BASE[@]}"
   "${GHOSTTY_TERMINAL[@]}"
   "${USER_APPLICATIONS[@]}"
   "${IME_INTERNATIONAL_INPUT[@]}"
