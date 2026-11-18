@@ -27,10 +27,14 @@ NORIX_BASE=(
   wlsunset
   libsecret
   wl-clipboard
-  gnome-keyring
+  # Fedora 45 default Secret Service (replaces gnome-keyring). greetd's
+  # PAM file already carries pam_oo7.so lines, so installing the module is
+  # enough to unlock the login keyring.
+  oo7-daemon
+  oo7-portal
+  pam_oo7
   brightnessctl
   adw-gtk3-theme
-  gnome-keyring-pam
 )
 
 GHOSTTY_TERMINAL=(
