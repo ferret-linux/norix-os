@@ -23,8 +23,7 @@ NORIX_BASE=(
   grim
   slurp
   satty
-  wl-copy
-  mangowc
+  mangowm
   wlsunset
   libsecret
   wl-clipboard
