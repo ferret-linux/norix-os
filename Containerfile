@@ -29,7 +29,7 @@ RUN sed -i 's/^NAME=.*/NAME="NorixOS"/' /usr/lib/os-release && \
 RUN rm -rf /opt && mkdir -p /opt
 
 # ── Repositories ─────────────────────────────────────────────
-RUN dnf config-manager addrepo --from-repofile=https://ferretlinux.org/repo/ferret-pkgs.repo && \
+RUN dnf config-manager addrepo --from-repofile=https://ferret-linux.github.io/repo/ferret-pkgs.repo && \
     dnf config-manager addrepo --from-repofile=https://negativo17.org/repos/fedora-multimedia.repo && \
     dnf config-manager setopt ferret-pkgs.enabled=1 && \
     dnf config-manager setopt fedora-multimedia.enabled=1 && \
