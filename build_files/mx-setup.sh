@@ -44,6 +44,7 @@ GHOSTTY_TERMINAL=(
 )
 
 USER_APPLICATIONS=(
+  gcr
   bazaar
   seahorse
   nautilus

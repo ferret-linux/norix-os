@@ -88,7 +88,10 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
 RUN dnf versionlock add $(rpm -qa --qf '%{NAME}\n')
 
 # ── Enable services ───────────────────────────────────────────
-RUN systemctl enable greetd
+# gnome-keyring used to provide the session SSH agent; gcr is the modern
+# replacement and needs its user socket enabled outside GNOME.
+RUN systemctl enable greetd && \
+    systemctl --global enable gcr-ssh-agent.socket
 
 # ── Disable GTK desktop portal (old) ──────────────────────────
 RUN rm -rf /usr/share/xdg-desktop-portal/portals/gtk.portal && \
