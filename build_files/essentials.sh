@@ -7,14 +7,6 @@ set -ouex pipefail
 # flattened into ONE dnf5 transaction below.
 # ---------------------------------------------------------------------------
 
-GHOSTTY_TERMINAL=(
-  ghostty-kio
-  ghostty-neovim
-  ghostty-terminfo
-  ghostty-bat-syntax
-  ghostty-zsh-completion
-)
-
 USER_APPLICATIONS=(
   sushi
   system-config-printer
@@ -53,7 +45,6 @@ NOCTALIA_SHELL=(
 ALL_PACKAGES=(
   "${XDG_BASE[@]}"
   "${NIRI_BASE[@]}"
-  "${GHOSTTY_TERMINAL[@]}"
   "${USER_APPLICATIONS[@]}"
   "${IME_INTERNATIONAL_INPUT[@]}"
   "${NOCTALIA_SHELL[@]}"

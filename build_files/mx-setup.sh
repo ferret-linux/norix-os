@@ -39,8 +39,6 @@ NORIX_BASE=(
 
 GHOSTTY_TERMINAL=(
   ghostty
-  ghostty-nautilus
-  ghostty-shell-integration
 )
 
 USER_APPLICATIONS=(
